@@ -25,25 +25,27 @@ public class ChessMatch {
     }
 
     public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
-        Position source = sourcePosition.toPosition();
-        Position target = targetPosition.toPosition();
-        validateSourcePosition(source);
+        Position source = sourcePosition.toPosition(); //Convertendo para posiçao da matriz
+        Position target = targetPosition.toPosition(); //Convertendo para posiçao da matriz
+        validateSourcePosition(source); //Valida se existe uma peça na posicao de origem
         Piece capturedPiece = makeMove(source, target);
         return (ChessPiece) capturedPiece;
 
 
     }
 
+    //Valida se existe uma peça na posicao de origem
     private void validateSourcePosition(Position position) {
         if (!board.thereIsAPiece(position)) {
             throw new ChessException("There is no piece in source position");
         }
     }
 
+    //Resposavel por mover a peça
     private Piece makeMove(Position source, Position target) {
-        Piece p = board.removePiece(source);
-        Piece captured = board.removePiece(target);
-        board.placePiece(p, target);
+        Piece p = board.removePiece(source); //remove a peça da posiçao de origem
+        Piece captured = board.removePiece(target); //remove uma posivel peça da posiçao de destino
+        board.placePiece(p, target); //coloca a peça na posicao desejada(target)
         return captured;
     }
 

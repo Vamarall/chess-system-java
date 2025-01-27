@@ -56,9 +56,9 @@ public class Board {
         if (piece(position) == null) {
             return null;
         }
-        Piece aux = piece(position);
+        Piece aux = piece(position); //variavel auxiliar recebe a peça que estiver na posiçao passada como paremtro
         aux.position = null;
-        pieces[position.getRow()][position.getColumn()] = null;
+        pieces[position.getRow()][position.getColumn()] = null; //remove a peça na posicao da matriz
         return aux;
 
     }
